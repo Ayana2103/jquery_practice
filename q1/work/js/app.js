@@ -85,7 +85,7 @@ $(function () {
   $("#q10 li").on("click", function(){
   //q10リストのボタンをクリックした際にイベント発生
     const index=$('li').index(this);//クリックしたliのインデックス番号を取得
-    $("#q11 li").eq(index).addClass("largeletter")
+    $("#q11 li").eq(index).addClass("largeletter");
     $("#largeletter").css("fontSize","2em");
   });
 });
