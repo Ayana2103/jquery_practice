@@ -98,6 +98,7 @@ $(function () {
   $("#q10 li").on("click", function(){
     //クリックしたliのインデックス番号を取得
     const index=$('#q10 li').index(this);
+    //クリックしたq10と同じq11のインデックス番号の要素にlarge-textクラスを追加
     $("#q11 li").eq(index).addClass("large-text");
   });
 });
