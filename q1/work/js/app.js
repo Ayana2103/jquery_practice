@@ -86,7 +86,7 @@ $(function () {
   //q9リストのボタンをクリックした際にイベント発生
   $("#q9 li").on("click", function(){
     //クリックしたliのインデックス番号を取得
-    const index=$('#q9 li').index(this) ;
+    const index=$(this).index() ;
     //アラートでインデックス番号を表示
     alert(index);
   });
@@ -97,7 +97,7 @@ $(function () {
   //q10リストのボタンをクリックした際にイベント発生
   $("#q10 li").on("click", function(){
     //クリックしたliのインデックス番号を取得
-    const index=$('#q10 li').index(this);
+    const index=$(this).index();
     //クリックしたq10と同じq11のインデックス番号の要素にlarge-textクラスを追加
     $("#q11 li").eq(index).addClass("large-text");
   });
