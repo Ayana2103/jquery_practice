@@ -1,3 +1,18 @@
+//検索ボタンを押してイベント実行
+$('.search-btn').on('click', function (){
+  //元々の要素を空にする
+  $('.lists').empty();
+  //検索ワードを取得
+  const searchWord =$('#search-input').val();
+
+  //検索ワードが空の場合の処理
+  if(!searchWord){
+    //下記要素前に下記のｐタグを追加する
+    $('.lists').before('<p class="message">正常に通信出来ませんでした。</p><p class="message">インターネットの接続の確認をしてください。</p>');
+  }
+});
+
+
 //変数settingsに設定情報などを格納
 const settings = {
   //実⾏するURL(エンドポイント)
@@ -16,9 +31,19 @@ $.ajax(settings).done(function (response) {
 });
 
 
-/*　リセット　最後　未
+
+
+/* 該当なし→HTML挿入
+if(        === 0){
+  $('.lists').before('<p class="message">検索結果が見つかりませんでした。</p><p class="message">別のキーワードで検索して下さい。</p>');
+});
+
+
+リセット　最後　未
 $('.reset-btn').on('click', function(){
   $('.lists').empty();
+  $('.search-input').val('');
+  $('.massage').remove();
 });
 */
 
