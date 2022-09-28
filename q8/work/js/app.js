@@ -1,16 +1,16 @@
-//検索ボタンを押してイベント実行
-$('.search-btn').on('click', function (){
-  //元々の要素を空にする
-  $('.lists').empty();
-  //検索ワードを取得
-  const searchWord =$('#search-input').val();
+$(function () {
+  //検索ボタンを押してイベント実行
+  $('.search-btn').on('click', function (){
+    //元々の要素を空にする
+    $('.lists').empty();
+    //検索ワードを取得
+    const searchWord =$('#search-input').val();
+    //検索ワードが空の場合の処理
+    if(!searchWord){
+      //下記要素前に下記のｐタグを追加する
+      $('.lists').before('<p class="message">正常に通信出来ませんでした。</p><p class="message">インターネットの接続の確認をしてください。</p>');
+    }
 
-  //検索ワードが空の場合の処理
-  if(!searchWord){
-    //下記要素前に下記のｐタグを追加する
-    $('.lists').before('<p class="message">正常に通信出来ませんでした。</p><p class="message">インターネットの接続の確認をしてください。</p>');
-  }
-});
 
 
 //変数settingsに設定情報などを格納
@@ -29,7 +29,8 @@ $.ajax(settings).done(function (response) {
 }).fail(function (err) {
   displayError(err)
 });
-
+});
+});
 
 
 
