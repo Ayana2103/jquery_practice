@@ -30,7 +30,12 @@ $.ajax(settings).done(function (response) {
   displayError(err)
 });
 });
+
+response();
+err();
+
 });
+
 
 
 
