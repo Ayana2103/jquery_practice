@@ -31,8 +31,8 @@ $.ajax(settings).done(function (response) {
 });
 });
 
-response();
-err();
+const displayResult = any;
+const displayError = any;
 
 });
 
