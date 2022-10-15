@@ -31,21 +31,37 @@ $(function () {
   });
 });
 
-const displayResult = any;
-const displayError = any;
+const displayResult =function(data){
+  //データの数を取得
+  const len = data.items.lenth;
+  let html;
+  //データの数だけ下記htmlを作成・表示
+  for(let i=0; i<len; i++){
+    //htmlを追加する際に表示するもの（タイトル、著作者、出版社、リンク）
+    html =
+    <ul>
+      <li>${data.items[i].title}</li>
+      <li>${data.items[i].author}</li>
+      <li>${data.items[i].publisher}</li>
+      <li>${data.items[i].link}</li>
+    </ul>
+  }
+  //listの中を空にしてから、上記で作成したhtmlをlistに追加
+  $('.list').empty().append(html);
+};
+const displayError = function(){
+  //該当する結果がなかった時の処置
+  if(searchWord.length === 0){
+    $('.lists').before('<p class="message">検索結果が見つかりませんでした。</p><p class="message">別のキーワードで検索して下さい。</p>');
+  };
+};
 
 });
 
 
 
 
-/* 該当なし→HTML挿入
-if(        === 0){
-  $('.lists').before('<p class="message">検索結果が見つかりませんでした。</p><p class="message">別のキーワードで検索して下さい。</p>');
-});
-
-
-リセット　最後　未
+/* リセット　最後　未
 $('.reset-btn').on('click', function(){
   $('.lists').empty();
   $('.search-input').val('');
