@@ -38,14 +38,14 @@ const displayResult =function(data){
   //データの数だけ下記htmlを作成・表示
   for(let i=0; i<len; i++){
     //htmlを追加する際に表示するもの（タイトル、著作者、出版社、リンク）
-    html =
+    html =`
     <ul>
       <li>${data.items[i].title}</li>
       <li>${data.items[i].author}</li>
       <li>${data.items[i].publisher}</li>
       <li>${data.items[i].link}</li>
     </ul>
-  }
+    `}
   //listの中を空にしてから、上記で作成したhtmlをlistに追加
   $('.list').empty().append(html);
 };
