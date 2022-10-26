@@ -3,13 +3,22 @@ $(function () {
   $('.search-btn').on('click', function (){
     //元々の要素を空にする
     $('.lists').empty();
+    //変数pagecountに1ずつ加算
+    const pageCount = pageCount + 1;
     //検索ワードを取得
     const searchWord =$('#search-input').val();
     //検索ワードが空の場合の処理
     if(!searchWord){
       //下記要素前に下記のｐタグを追加する
       $('.lists').before('<p class="message">正常に通信出来ませんでした。</p><p class="message">インターネットの接続の確認をしてください。</p>');
-    }
+    //keepWordがsearchWordと違う時の処理
+    }else if(keepWord !==searchWord){
+      //pageCountを1にする
+      pageCount =1;
+      //keepWordにseachWordを保存
+      var keepWord = searchWord;
+    };
+
 
 
 
