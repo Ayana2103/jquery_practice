@@ -35,13 +35,13 @@ $(function () {
   //q5ボタンをクリックした際にイベント発生
   $("#q5").on("click", function(){
     //選択した要素内の先頭にpを追加
-    $(this).prepend('<p>DOMの中の前</p>');
+    $(this).prepend('DOMの中の前');
     //選択した要素内の最後にpを追加
-    $(this).append('<p>DOMの中の後</p>');
+    $(this).append('DOMの中の後');
     //選択した要素の前にpを追加
-    $(this).before('<p>DOMの前</p>');
+    $(this).before('DOMの前');
     //選択した要素の後にpを追加
-    $(this).after('<p>DOMの後</p>');
+    $(this).after('DOMの後');
   });
 });
 
@@ -102,3 +102,7 @@ $(function () {
     $("#q11 li").eq(index).addClass("large-text");
   });
 });
+
+/*メモ
+q5 .pretend()など、文字を入れたい時は<p>タグなどは不要
+*/
