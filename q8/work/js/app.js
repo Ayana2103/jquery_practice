@@ -13,8 +13,10 @@ $(function () {
     //pageCountに＋1
     pageCount++;
     } else {
-    //一致しない場合listの要素中身を空にしkeepWordにsearchWordの値を代入
-    $('.lists').empty(),inputWord = searchWord,pageCount = 1;
+    //一致しない場合listの要素中身を空にする
+    $('.lists').empty();
+    //keepWordにsearchWordの値を代入
+    inputWord = searchWord,pageCount = 1;
     };
 
 
@@ -68,15 +70,9 @@ $(function () {
     $('.lists').empty();
     // messageクラスを持つ要素を削除
     $('.message').remove();
-  };
-};
-
-
-
-  //関数名displayErrorに仮引数errを渡す
-  function displayError(err){
-  //err.statusが0の場合
-    if(err.status === 0) {
+    //err.statusが0の場合
+    
+    } else if(err.status === 0) {
       //lists要素の前に下記divを追加
       $('.lists').before('<div class="message">正常に通信できませんでした<br>インターネットの接続を確認してください</div>')
 
