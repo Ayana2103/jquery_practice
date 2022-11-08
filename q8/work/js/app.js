@@ -9,12 +9,13 @@ $(function () {
     //検索ワードを取得
     const searchWord =$('#search-input').val();
     //sarchWordがkeepWordと一致する場合
-    searchWord == keepWord ?
+    if( searchWord == keepWord ){
     //pageCountに＋1
-    pageCount++ :
+    pageCount++;
+    } else {
     //一致しない場合listの要素中身を空にしkeepWordにsearchWordの値を代入
-    ($('.lists').empty(),inputWord = searchWord,pageCount = 1);
-
+    $('.lists').empty(),inputWord = searchWord,pageCount = 1;
+    };
 
 
   //変数settingsに設定情報などを格納
@@ -44,15 +45,17 @@ $(function () {
     //message要素を削除
     $('.message').remove();
     //result[0]['items']がundefinedでない場合
-    result[0].items !== undefined ?
-    //ajaxから取得したアイテムの数分ループする
-    $.each(result[0].items,function(i){
-      //listsクラスの子要素の先頭にタイトル、作者、出版社、書籍情報詳細に飛ぶリンク要素を追加
-      $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
-    }):
-    //undifinedの場合、listsクラスを持つ要素の前に下記テキストを追加
-    $('.lists').before('<div class="message">検索結果が見つかりませんでした<br>別のキーワードで検索してください</div>');
+    if(result[0].items !== undefined ){
+      //ajaxから取得したアイテムの数分ループする
+      $.each(result[0].items,function(i){
+        //listsクラスの子要素の先頭にタイトル、作者、出版社、書籍情報詳細に飛ぶリンク要素を追加
+        $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
+      });
+    } else {
+      //undifinedの場合、listsクラスを持つ要素の前に下記テキストを追加
+      $('.lists').before('<div class="message">検索結果が見つかりませんでした<br>別のキーワードで検索してください</div>');
     };
+  };
 
 
   //関数名displayErrorに仮引数errを渡す
@@ -114,6 +117,24 @@ $('.reset-btn').on('click', function(){
   keepWord = "";
 
 });
+
+
+
+/*メモ
+
+※12行目から18行目が「三項演算子」の場合
+searchWord == keepWord ?
+pageCount++ :
+($('.lists').empty(),inputWord = searchWord,pageCount = 1);
+
+※48行目から58行目が「三項演算子」の場合
+result[0].items !== undefined ?
+$.each(result[0].items,function(i){
+$('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
+}):
+$('.lists').before('<div class="message">検索結果が見つかりませんでした<br>別のキーワードで検索してください</div>');
+};
+*/
 
 
 
