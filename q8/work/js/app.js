@@ -38,6 +38,9 @@ $(function () {
   }).fail(function (err) {
     //関数displayErrorに引数errを渡して実行
     displayError(err)
+    console.log("XMLHttpRequest : " + XMLHttpRequest.status);//確認用　消す
+    console.log("textStatus     : " + textStatus);//確認用 消す
+    console.log("errorThrown    : " + errorThrown.message);//確認用　消す
   });
 });
 
