@@ -73,28 +73,34 @@ $(function () {
 
     //err.statusが0の場合
     } else if(err.status === 0) {
+      //lists要素の中を空にする
+      $('.lists').empty();
+      //message要素を削除
+      $('.message').remove();
       //lists要素の前に下記divを追加
       $('.lists').before('<div class="message">正常に通信できませんでした<br>インターネットの接続を確認してください</div>')
 
     //err.statusが500の場合
     } else if (err.status == 500) {
     } else if (err.status === 400) {
+      //lists要素の中を空にする
+      $('.lists').empty();
+      //message要素を削除
+      $('.message').remove();
       // lists要素の前に下記divを追加
       $('.lists').before('<div class="message">通信先のページで内部エラーが発生しています</div>')
       $('.lists').before('<div class="message">検索ワードが入力されていません。</div>')
 
     //それ以外の場合
     } else {
+      //lists要素の中を空にする
+      $('.lists').empty();
+      //message要素を削除
+      $('.message').remove();
        //lists要素の前に下記divを追加
       $('.lists').before('<div class="message">通信エラーが発生しています</div>')
       $('.lists').before('<div class="message">予期せぬエラーが発生しました</div>')
     };
-    //lists要素の中を空にする
-    $('.lists').empty();
-    //message要素を削除
-    $('.message').remove();
-    //lists要素の前に下記div要素を追加
-    $('.lists').before('<div class="message">正常に通信できませんでした<br>インターネットの接続を確認してください</div>');
   };
 });
 
