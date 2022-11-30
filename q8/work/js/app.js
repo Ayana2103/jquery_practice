@@ -23,7 +23,7 @@ $(function () {
   //変数settingsに設定情報などを格納
   const settings = {
     //実⾏するURL(エンドポイント)
-    "url": `https://ci.nii.ac.jp/books/opensearch/search?title=${searchWord}&format=json&p=${pageCount}&count=20&Access-Control-Allow-Origin: *`,
+    "url": `https://ci.nii.ac.jp/books/opensearch/search?title=${searchWord}&format=json&p=${pageCount}&count=20`,
     //サーバーに送るメソッド
     "method": "GET",
   }
@@ -38,6 +38,9 @@ $(function () {
   }).fail(function (err) {
     //関数displayErrorに引数errを渡して実行
     displayError(err)
+    console.log("XMLHttpRequest : " + XMLHttpRequest.status);//HTTPリクエストのステータスの取得 確認用
+    console.log("textStatus     : " + textStatus);//タイムアウト、パースエラー等のエラー情報の取得
+    console.log("errorThrown    : " + errorThrown.message);//例外情報の取得
   });
 });
 
