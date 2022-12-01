@@ -38,9 +38,9 @@ $(function () {
   }).fail(function (err) {
     //関数displayErrorに引数errを渡して実行
     displayError(err)
-    console.log("XMLHttpRequest : " + XMLHttpRequest.status);//HTTPリクエストのステータスの取得 確認用
-    console.log("textStatus     : " + textStatus);//タイムアウト、パースエラー等のエラー情報の取得
-    console.log("errorThrown    : " + errorThrown.message);//例外情報の取得
+    console.log("err: " + err.status);//確認用　削除
+    console.log("fail: " + fail);//確認用　×削除
+    console.log("displayError: " + displayError);//確認用　×削除
   });
 });
 
@@ -127,12 +127,12 @@ $('.reset-btn').on('click', function(){
 
 /*メモ
 
-※12行目から18行目が「三項演算子」の場合
+※「三項演算子」の場合
 searchWord == keepWord ?
 pageCount++ :
 ($('.lists').empty(),inputWord = searchWord,pageCount = 1);
 
-※48行目から58行目が「三項演算子」の場合
+
 result[0].items !== undefined ?
 $.each(result[0].items,function(i){
 $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
