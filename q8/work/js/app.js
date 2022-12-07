@@ -38,9 +38,7 @@ $(function () {
   }).fail(function (err) {
     //関数displayErrorに引数errを渡して実行
     displayError(err)
-    console.log("err: " + err.status);//確認用　削除
-    console.log("fail: " + fail);//確認用　×削除
-    console.log("displayError: " + displayError);//確認用　×削除
+    console.log("err: " + err.status);//確認用
   });
 });
 
