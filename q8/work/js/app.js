@@ -130,13 +130,16 @@ searchWord == keepWord ?
 pageCount++ :
 ($('.lists').empty(),inputWord = searchWord,pageCount = 1);
 
-
 result[0].items !== undefined ?
 $.each(result[0].items,function(i){
 $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
 }):
 $('.lists').before('<div class="message">検索結果が見つかりませんでした<br>別のキーワードで検索してください</div>');
 };
+
+※クローム拡張子CORS Unblock
+一時的にリクエストの許可がされていないエラーの解除ができる。
+インストール後、アイコンがオレンジで機能中。
 */
 
 
