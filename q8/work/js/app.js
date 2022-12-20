@@ -16,7 +16,8 @@ $(function () {
     //一致しない場合listの要素中身を空にする
     $('.lists').empty();
     //keepWordにsearchWordの値を代入
-    inputWord = searchWord,pageCount = 1;
+    inputWord = searchWord;
+    pageCount = 1;
     };
 
 
@@ -83,13 +84,19 @@ $(function () {
 
     //err.statusが500の場合
     } else if (err.status == 500) {
-    } else if (err.status === 400) {
       //lists要素の中を空にする
       $('.lists').empty();
       //message要素を削除
       $('.message').remove();
       // lists要素の前に下記divを追加
       $('.lists').before('<div class="message">通信先のページで内部エラーが発生しています</div>')
+
+    } else if (err.status === 400) {
+      //lists要素の中を空にする
+      $('.lists').empty();
+      //message要素を削除
+      $('.message').remove();
+      // lists要素の前に下記divを追加
       $('.lists').before('<div class="message">検索ワードが入力されていません。</div>')
 
     //それ以外の場合
