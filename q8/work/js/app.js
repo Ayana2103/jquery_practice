@@ -55,6 +55,7 @@ $(function () {
         //listsクラスの子要素の先頭にタイトル、作者、出版社、書籍情報詳細に飛ぶリンク要素を追加
         $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
       });
+
     } else {
       //undifinedの場合、listsクラスを持つ要素の前に下記テキストを追加
       $('.lists').before('<div class="message">検索結果が見つかりませんでした<br>別のキーワードで検索してください</div>');
@@ -64,50 +65,26 @@ $(function () {
 
   //関数名displayErrorに仮引数errを渡す
   function displayError(err){
-    //err.statusが404の場合
-    if(err.status === 404) {
-    //listsクラスを持つ要素の前に下記divを追加する
-    $('.lists').before('<div class="message">正常に通信できませんでした<br>インターネットの接続を確認してください</div>')
-    //listsクラスを持つ要素の中を空にする
+    //lists要素の中を空にする
     $('.lists').empty();
-    // messageクラスを持つ要素を削除
+    //message要素を削除
     $('.message').remove();
 
     //err.statusが0の場合
-    } else if(err.status === 0) {
-      //lists要素の中を空にする
-      $('.lists').empty();
-      //message要素を削除
-      $('.message').remove();
+    if(err.status === 0) {
       //lists要素の前に下記divを追加
-      $('.lists').before('<div class="message">正常に通信できませんでした<br>インターネットの接続を確認してください</div>')
+      $('.lists').before('<div class="message">正常に通信できませんでした。<br>インターネットの接続を確認してください。</div>')
 
-    //err.statusが500の場合
-    } else if (err.status == 500) {
-      //lists要素の中を空にする
-      $('.lists').empty();
-      //message要素を削除
-      $('.message').remove();
-      // lists要素の前に下記divを追加
-      $('.lists').before('<div class="message">通信先のページで内部エラーが発生しています</div>')
-
+    //err.statusが400の場合
     } else if (err.status === 400) {
-      //lists要素の中を空にする
-      $('.lists').empty();
-      //message要素を削除
-      $('.message').remove();
       // lists要素の前に下記divを追加
       $('.lists').before('<div class="message">検索ワードが入力されていません。</div>')
 
     //それ以外の場合
     } else {
-      //lists要素の中を空にする
-      $('.lists').empty();
-      //message要素を削除
-      $('.message').remove();
        //lists要素の前に下記divを追加
-      $('.lists').before('<div class="message">通信エラーが発生しています</div>')
-      $('.lists').before('<div class="message">予期せぬエラーが発生しました</div>')
+      $('.lists').before('<div class="message">通信エラーが発生しています。</div>')
+      $('.lists').before('<div class="message">予期せぬエラーが発生しました。</div>')
     };
   };
 });
@@ -147,9 +124,20 @@ $('.lists').before('<div class="message">検索結果が見つかりませんで
 ※クローム拡張子CORS Unblock
 一時的にリクエストの許可がされていないエラーの解除ができる。
 インストール後、アイコンがオレンジで機能中。
+
+※あとで見返す
+//err.statusが404の場合
+if(err.status === 404) {
+//listsクラスを持つ要素の前に下記divを追加する
+$('.lists').before('<div class="message">正常に通信できませんでした<br>インターネットの接続を確認してください</div>')
+
+//err.statusが500の場合
+} else if (err.status == 500) {
+// lists要素の前に下記divを追加
+$('.lists').before('<div class="message">通信先のページで内部エラーが発生しています</div>')
+
+
 */
-
-
 
 // API
 // const settings = {
