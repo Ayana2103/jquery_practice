@@ -56,6 +56,7 @@ $(function () {
         $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
       });
 
+
     } else {
       //undifinedの場合、listsクラスを持つ要素の前に下記テキストを追加
       $('.lists').before('<div class="message">検索結果が見つかりませんでした<br>別のキーワードで検索してください</div>');
@@ -135,6 +136,9 @@ $('.lists').before('<div class="message">正常に通信できませんでした
 } else if (err.status == 500) {
 // lists要素の前に下記divを追加
 $('.lists').before('<div class="message">通信先のページで内部エラーが発生しています</div>')
+
+※覚書メモ　後で消す
+$('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
 
 
 */
