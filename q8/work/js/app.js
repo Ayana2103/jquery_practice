@@ -52,8 +52,13 @@ $(function () {
     if(result[0].items !== undefined ){
       //ajaxから取得したアイテムの数分ループする
       $.each(result[0].items,function(i){
-        //listsクラスの子要素の先頭にタイトル、作者、出版社、書籍情報詳細に飛ぶリンク要素を追加
-        $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + result[0].items[i].title + '</p><p>作者：' + result[0].items[i]['dc:creator'] + '</p><p>出版社：' + result[0].items[i]['dc:publisher'] + '</p><a href = "' + result[0].items[i]['@id'] + '"target="_blank">書籍情報</a></div></li>')
+        //titleに値が返ってきた場合その値（true）、空だった場合はタイトル不明（false）を代入※creator,publisher,idもそれぞれ同様に代入
+        const title = result[0].items[i].title ? result[0].items[i].title : 'タイトル不明';
+        const creator = result[0].items[i]['dc:creator'] ? result[0].items[i]['dc:creator'] : '作者不明';
+        const publisher = result[0].items[i]['dc:publisher'] ? result[0].items[i]['dc:publisher'] : '出版社不明';
+        const id = result[0].items[i]['@id'] ? result[0].items[i]['@id'] : '書籍情報不明';
+        //listsクラスの子要素の先頭に上記で代入したタイトル、作者、出版社、書籍情報詳細に飛ぶリンク要素を追加
+        $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイトル：' + title + '</p><p>作者：' + creator + '</p><p>出版社：' + publisher + '</p><a href = "' + id + '"target="_blank">書籍情報</a></div></li>')
       });
 
 
