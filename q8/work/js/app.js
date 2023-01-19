@@ -9,14 +9,14 @@ $(function () {
     //検索ワードを取得
     const searchWord =$('#search-input').val();
     //sarchWordがkeepWordと一致する場合
-    if( searchWord == keepWord ){
+    if( searchWord === keepWord ){
     //pageCountに＋1
     pageCount++;
     } else {
     //一致しない場合listの要素中身を空にする
     $('.lists').empty();
     //keepWordにsearchWordの値を代入
-    inputWord = searchWord;
+    keepWord = searchWord;
     pageCount = 1;
     };
 
@@ -89,7 +89,6 @@ $(function () {
     //それ以外の場合
     } else {
        //lists要素の前に下記divを追加
-      $('.lists').before('<div class="message">通信エラーが発生しています。</div>')
       $('.lists').before('<div class="message">予期せぬエラーが発生しました。</div>')
     };
   };
