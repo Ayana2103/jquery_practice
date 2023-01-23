@@ -39,7 +39,6 @@ $(function () {
   }).fail(function (err) {
     //関数displayErrorに引数errを渡して実行
     displayError(err)
-    console.log("err: " + err.status);//確認用
   });
 });
 
@@ -125,6 +124,9 @@ $('.lists').prepend('<li class="lists-item"><div class="list-inner"><p>タイト
 }):
 $('.lists').before('<div class="message">検索結果が見つかりませんでした<br>別のキーワードで検索してください</div>');
 };
+
+※41行目下にてエラーの確認用（確認出来たら消す）
+console.log("err: " + err.status);
 
 ※クローム拡張子CORS Unblock
 一時的にリクエストの許可がされていないエラーの解除ができる。
